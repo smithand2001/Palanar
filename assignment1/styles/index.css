@@ -1,0 +1,402 @@
+.eecs-title {
+    width: 1150px;
+    height: 100px;
+}
+
+p {
+    background-color: rgb(5, 82, 77);
+    /* display: inline-block; */
+}
+.college {
+    color: aqua;
+    padding-top: 15px;
+    padding-left: 40px;
+    font-size: 15px;
+    margin-bottom: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a.college {
+    color: aqua;
+    text-decoration: none;
+    padding-left: 0px;
+}
+
+.school {
+    color: white;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    font-size: 35px;
+    margin-top: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.logo {
+    width: 155px;
+    float:right;
+    margin-top: 30px;
+    object-fit:cover;
+}
+
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 50px 0;
+    clear: both;
+}
+
+.menu-area {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a.menu-area li  {
+    text-align:center;
+    position: relative;
+    display: block;
+    text-decoration: none;
+}
+
+.carousel-item {
+    height:30rem;
+    margin-top: -20px;
+    width: 1150px;
+    background:#777;
+    background-position:center;
+    background-size:cover;
+}
+
+.container {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+.carousel1-box {
+    height: 9rem;
+    background-color: rgb(5, 43, 36);
+    width: 437px;
+    margin-left: 700px;
+    margin-bottom: -130px;
+    opacity: .2;
+}
+
+.carousel1-title {
+    color:aqua;
+    margin-left: 700px;
+    margin-bottom: 5px;
+    font-size: 25px;
+    
+}
+
+.carousel1-body {
+    color:white;
+    background-color: transparent;
+    width: 280px;;
+    margin-left: 700px;
+    padding-bottom: 50px;
+}
+
+.carousel-control-prev{
+    margin-right: 300px;
+}
+
+.carousel-control-next {
+    margin-right: 200px;
+}
+
+.row3-box {
+    height:30rem;
+    margin-top: -20px;
+    width: 1150px;
+    background:rgb(226, 240, 238);
+    background-position:center;
+    background-size:cover;
+}
+
+.directors-box {
+    height:5rem;
+    background:rgb(5, 82, 77);
+    width:275px;
+    border-left: #f6861f 7px solid; 
+}
+
+.directors-title {
+    color:aqua;
+    margin-right: 700px;
+    padding-top:30px;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+    font-weight:600;
+    width: 220px;
+}
+
+.drpande-img {
+    padding-left:50px;
+    padding-top:10px;
+}
+
+.drpande-caption {
+    height:2rem;
+    background:rgb(5, 82, 77);
+    width: 225px;
+    margin-left: 50px;
+    margin-top: 10px;
+    text-align: center;
+    font-style: italic;
+    font-weight: 600;
+    color: white;
+}
+
+.drpande-message {
+    background-color: transparent;
+    width: 250px;
+    margin-left: 300px;
+    padding-top: 15px;
+    font-weight: 400;
+    font-size: medium;
+}
+
+.drpande-messagelink {
+    background-color: transparent;
+    width: 200px;
+    margin-left: 300px;
+    color:rgb(6, 127, 136);
+    font-size: medium;
+}
+
+a.drpande-messagelink {
+    text-decoration: none;
+}
+
+.row4-box {
+    height:5rem;
+    margin-top: -20px;
+    width: 1150px;
+    background:rgb(180, 27, 27);
+    background-position:center;
+    background-size:cover;
+
+    
+}
+
+.facultyOpenings {
+    color:white;
+    padding-top:13px;
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+    font-weight:900;
+    background-color:transparent;
+    text-align:center;
+    overflow:hidden;
+}
+
+a.facultyOpenings {
+    text-decoration: none;
+}
+
+.row5-box {
+    height:30rem;
+    margin-top: -20px;
+    width: 1150px;
+    background:rgb(201, 231, 226);
+    background-position:center;
+    background-size:cover;
+}
+
+
+.row6-box {
+    height:30rem;
+    margin-top: -20px;
+    width: 1150px;
+    background:rgb(226, 240, 238);
+    background-position:center;
+    background-size:cover;
+}
+
+.events {
+    height: 2.5rem;
+    background:rgb(5, 82, 77);
+    border-left: #f6861f 7px solid; 
+    color: aqua;
+    margin-right: 700px;
+    padding-left: 5px;
+    font-size: 1.3rem;
+    font-weight:600;
+    text-align: left;
+    width: 110px;
+    }
+
+.event1 {
+    text-decoration: none;
+    margin-left: 50px;
+    color: rgb(5, 82, 77);
+    font-weight: 600;
+}
+
+.event1-date {
+    background-color: transparent;
+    margin-left: 50px;
+}
+
+.event2 {
+    text-decoration: none;
+    margin-left: 50px;
+    color: rgb(5, 82, 77);
+    font-weight: 600;
+}
+
+.event2-date {
+    background-color: transparent;
+    margin-left: 50px;
+}
+
+.event3 {
+    text-decoration: none;
+    margin-left: 50px;
+    color: rgb(5, 82, 77);
+    font-weight: 600;
+}
+
+.event3-date {
+    background-color: transparent;
+    margin-left: 50px;
+}
+
+.moreEvents {
+    text-decoration: none;
+    color: rgb(5, 82, 77);
+    text-align: right;
+}
+
+
+.facts {
+    height: 2.5rem;
+    background:rgb(5, 82, 77);
+    border-left: #f6861f 7px solid; 
+    color: aqua;
+    margin-right: 700px;
+    padding-left: 5px;
+    font-size: 1.3rem;
+    font-weight:600;
+    text-align: left;
+    width: 110px;
+    
+}
+
+.column {
+    float: left;
+    width: 20%;
+    padding-left: 50px;
+    padding-top: 40px;
+    
+}
+
+.row2::after {
+    content:"";
+    display: table;
+    clear: both;
+}
+
+.microscope-text {
+    background-color: transparent;
+    color: rgb(95, 10, 10);
+    font-weight: 600;
+    font-size: 1.9em;
+    margin-left: -40px;
+}
+
+.microscope-text1 {
+    background-color: transparent;
+    font-weight: 600;
+
+}
+
+.growth-text {
+    background-color: transparent;
+    color: rgb(95, 10, 10);
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 1.9em;
+}
+
+.growth-text1 {
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.awards-text {
+    background-color: transparent;
+    color: rgb(95, 10, 10);
+    margin-left: 12px;
+    font-weight: 600;
+    font-size: 1.9em;
+    
+}
+
+.awards-text1 {
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.programs-text {
+    background-color: transparent;
+    color: rgb(95, 10, 10);
+    font-weight: 600;
+    font-size: 1.9em;
+}
+
+.programs-text1 {
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.fellows-text {
+    background-color: transparent;
+    color: rgb(95, 10, 10);
+    margin-left: 35px;
+    font-weight: 600;
+    font-size: 1.9em;
+}
+
+.fellows-text1 {
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.fluff-text {
+    background-color: transparent;
+    font-style: italic;
+}
+
+.moreFacts {
+    text-decoration: none;
+    color: rgb(5, 82, 77);
+    text-align: right;
+}
+
+
+.row7-box {
+    height:10rem;
+    margin-top: -20px;
+    width: 1150px;
+    background:rgb(1, 46, 39);
+    background-position:center;
+    background-size:cover;
+}
+
+.endLogo {
+    padding-top: 30px;
+    padding-left: 10px;
+}
+
+.endText {
+    background-color: transparent;
+    color: white;
+    padding-top: 15px;
+    padding-left: 20px;
+}
