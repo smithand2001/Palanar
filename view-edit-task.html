@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View and Edit Task</title>
+    <link href="./styles/view-edit-task.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="web-wrapper">
+        <form action="TOBEDETERMINED.html" method="GET">
+            <div class="view-task-background">
+                <div class="task-name-title subgroup">
+                    <!-- <p>Task Name</p> -->
+                    <!-- <label for="task-name">Task Name</label> -->
+                    <input type="text" id="task-name" name="task-name" placeholder="Enter task name"
+                    class="task-name-title task-name-input-box" required>
+                </div>
+                <div class="task-info subgroup">
+                    <!-- <p>Due date</p> -->
+                    <label for="due-date">Due Date</label>
+                    <input type="date" id="due-date" name="due-date" required>
+                    <label for="type">Type</label>
+                    <select id="type" name="type" style="width: 8rem;">
+                        <option value="homework">Homework</option>
+                        <option value="project">Project</option>
+                        <option value="exam">Exam</option>
+                        <option value="reading">Reading</option>
+                    </select>
+                    <label for="class">Class</label>
+                    <input type="text" id="class" name="class" placeholder="Class that this task is for" required>
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority" style="width: 8rem;">
+                        <option value="very-high">Very High</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="task-description subgroup">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" placeholder="Task description">
+                </div>
+                <div class="task-cancel-done subgroup">
+                    <div style="justify-self: right; align-self: center">
+                        <button type="button">Cancel</button>
+                        <button type="submit">Done</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
