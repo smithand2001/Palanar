@@ -3,10 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var seqeuelize = require('./db')
 
 var landingRouter = require('./routes/landing');
 var usersRouter = require('./routes/users');
-var homeRouter = require('./routes/home');
+var studentHomeRouter = require('./routes/studentHome');
+var adminHomeRouter = require('./routes/adminHome')
 
 var app = express();
 
@@ -22,7 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', landingRouter);
 app.use('/users', usersRouter);
-app.use('/home', homeRouter);
+app.use('/studentHome', studentHomeRouter);
+app.use('/adminHome', adminHomeRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,5 +42,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// START OF NEW CODE
+seqeuelize.sync({force: true}).then(()=>{
+  console.log("Sequelize Sync Completed...")
+})
 
 module.exports = app;
