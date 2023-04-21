@@ -54,11 +54,65 @@
         <div class="container-sm">
             <div class="row g-6">
                 <h2>Account</h2>
-                <h3>Change password</h3>
-            </div>
-            <div class="row g-6">
-                <h2>Notifications</h2>
-                <h3>Allow email notifications</h3>
+                <!-- <h3>Change personal information</h3>
+                <h3>Change password</h3> -->
+
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <span style="font-weight: bold; font-size: 1rem;">Update personal information
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <form method="POST">
+                            <div class="row mb-3">
+                                <label for="newFirstName" class="col-form-label col-sm-2">First Name</label>
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control" id="newFirstName" name="newFirstName"> 
+                                </div>
+                                <!-- <div class="col-sm-6"></div> -->
+                            </div>
+                                
+                            <div class="row mb-3">
+                                <label for="newLastName" class="col-form-label col-sm-2">Last Name</label>
+                                <div class="form-group col-sm-4">
+                                    <input type="text" class="form-control" id="newLastName" name="newLastName">
+                                </div>
+                                <!-- <div class="col-sm-6"></div> -->
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="newPhoneNumber" class="col-form-label col-sm-2">Phone Number</label>
+                                <div class="form-group col-sm-4">
+                                    <input type="number" class="form-control" id="newPhoneNumber" name="newPhoneNumber">
+                                </div>
+                                <!-- <div class -->
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="form-group col-sm-2">
+                                    <button type="button" class="btn btn-primary gx-3" type="submit">Update</button>
+                                </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Update password
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
         </div>
     </div>
