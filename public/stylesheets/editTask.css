@@ -1,9 +1,16 @@
-/* .wrapper
-{
-    margin-left: 20%;
-    margin-right: 20%;
-} */
+.col.NavBar {
+    height: 200px;
+}
 
-/* .form-horizontal .control-label {
-    text-align: left;
-} */
+.icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display:inline-block;
+}
+
+.logo{
+    width: 257px;
+    height: 103px;
+    object-fit: cover;
+}
