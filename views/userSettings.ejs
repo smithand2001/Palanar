@@ -64,13 +64,13 @@
                           <span style="font-weight: bold; font-size: 1rem;">Update personal information
                         </button>
                       </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                      <div id="collapseOne" class="accordion-collapse collapse <% if(locals.infoAlertResponse) { %> show <% } %>" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                          <form method="POST">
+                          <form method="POST" action="/userSettings/updateInfoSubmit">
                             <div class="row mb-3">
                                 <label for="newFirstName" class="col-form-label col-sm-2">First Name</label>
                                 <div class="form-group col-sm-4">
-                                    <input type="text" class="form-control" id="newFirstName" name="newFirstName"> 
+                                    <input required type="text" class="form-control" id="newFirstName" name="newFirstName" > 
                                 </div>
                                 <!-- <div class="col-sm-6"></div> -->
                             </div>
@@ -78,7 +78,7 @@
                             <div class="row mb-3">
                                 <label for="newLastName" class="col-form-label col-sm-2">Last Name</label>
                                 <div class="form-group col-sm-4">
-                                    <input type="text" class="form-control" id="newLastName" name="newLastName">
+                                    <input required type="text" class="form-control" id="newLastName" name="newLastName" >
                                 </div>
                                 <!-- <div class="col-sm-6"></div> -->
                             </div>
@@ -86,29 +86,64 @@
                             <div class="row mb-3">
                                 <label for="newPhoneNumber" class="col-form-label col-sm-2">Phone Number</label>
                                 <div class="form-group col-sm-4">
-                                    <input type="number" class="form-control" id="newPhoneNumber" name="newPhoneNumber">
+                                  <!-- regex from https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel -->
+                                    <input required type="tel" class="form-control" id="newPhoneNumber" name="newPhoneNumber" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
                                 </div>
                                 <!-- <div class -->
                             </div>
 
                             <div class="row mb-3">
                                 <div class="form-group col-sm-2">
-                                    <button type="button" class="btn btn-primary gx-3" type="submit">Update</button>
+                                    <button type="submit" class="btn btn-primary gx-3">Update</button>
                                 </div>
                             </div>
+
+                            <%- include("personalInfoAlerts") %>
                           </form>
                         </div>
                       </div>
                     </div>
                     <div class="accordion-item">
                       <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Update password
+                        <button class="accordion-button  collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <span style="font-weight: bold;">Update password</span>
                         </button>
                       </h2>
-                      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div id="collapseTwo" class="accordion-collapse <% if(!locals.passAlertResponse) { %> collapse <% } %>" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          <form method="POST" action="/userSettings/updatePassSubmit">
+                            <div class="row mb-3">
+                                <label for="currentPassword" class="col-form-label col-sm-2">Current Password</label>
+                                <div class="form-group col-sm-4">
+                                    <input required type="password" class="form-control" id="currentPassword" name="currentPassword" minlength="4" maxlength="24"> 
+                                </div>
+                                <!-- <div class="col-sm-6"></div> -->
+                            </div>
+                                
+                            <div class="row mb-3">
+                                <label for="newPassword" class="col-form-label col-sm-2">New Password</label>
+                                <div class="form-group col-sm-4">
+                                    <input required type="password" class="form-control" id="newPassword" name="newPassword" minlength="4" maxlength="24">
+                                </div>
+                                <!-- <div class="col-sm-6"></div> -->
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="confirmNewPassword" class="col-form-label col-sm-2">Confirm Password</label>
+                                <div class="form-group col-sm-4">
+                                    <input required type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" minlength="4" maxlength="24">
+                                </div>
+                                <!-- <div class -->
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="form-group col-sm-2">
+                                    <button type="submit" class="btn btn-primary gx-3">Update</button>
+                                </div>
+                            </div>
+
+                            <%- include("passwordAlerts") %>
+                          </form>
                         </div>
                       </div>
                     </div>

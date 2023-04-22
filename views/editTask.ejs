@@ -54,32 +54,32 @@
             <h1>Edit Task</h1>
         </div>
 
-        <form method="POST">
+        <form method="POST" action="/editTask/update">
             <div class="row g-6">
                 <div class="form-group col mb-3">
-                    <label for="formAssignmentName" class="col-form-label-lg">Assignment Name</label>
-                    <input type="text" class="form-control" id="formAssignmentName" name="formAssignmentName">
+                    <label for="formAssignmentName" class="col-form-label-lg">Task Name</label>
+                    <input required type="text" class="form-control" id="formAssignmentName" name="formAssignmentName">
                 </div>
             </div>
 
             <div class="row g-6">
                 <div class="form-group col mb-3">
                     <label for="formDueDate" class="col-form-label">Due Date</label>
-                    <input type="date" class="form-control" id="formDueDate" name="formDueDate">
+                    <input required type="date" class="form-control" id="formDueDate" name="formDueDate">
                 </div>
                 <div class="form-group col mb-3">
                     <label for="formAssignmentType" class="col-form-label">Type</label>
-                    <select class="form-select" id="formAssignmentType" name="formAssignmentType" >
-                        <option selected></option>
-                        <option value="1">Homework</option>
-                        <option value="2">Reading</option>
-                        <option value="3">Study</option>
-                        <option value="4">Quiz</option>
-                        <option value="5">Test</option>
-                        <option value="6">Lab</option>
-                        <option value="7">Project</option>
-                        <option value="8">Final</option>
-                        <option value="9">Other</option>
+                    <select required class="form-select" id="formAssignmentType" name="formAssignmentType" >
+                        <option selected value="">Choose an option...</option>
+                        <option value="Homework">Homework</option>
+                        <option value="Reading">Reading</option>
+                        <option value="Study">Study</option>
+                        <option value="Quiz">Quiz</option>
+                        <option value="Test">Test</option>
+                        <option value="Lab">Lab</option>
+                        <option value="Project">Project</option>
+                        <option value="Final">Final</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
@@ -87,16 +87,16 @@
             <div class="row g-6">
                 <div class="form-group col mb-3">
                     <label for="formAssignmentClass" class="col-form-label">Class</label>
-                    <input type="text" class="form-control" id="formAssignmentClass" name="formAssignmentClass"> 
+                    <input required type="text" class="form-control" id="formAssignmentClass" name="formAssignmentClass"> 
                 </div>
                 <div class="form-group col mb-3">
                     <label for="formAssignmentPriority" class="col-form-label">Priority</label>
-                    <select class="form-select" id="formAssignmentPriority" name="formAssignmentPriority">
-                        <option selected></option>
-                        <option value="1">Very High</option>
-                        <option value="2">High</option>
-                        <option value="3">Medium</option>
-                        <option value="4">Low</option>
+                    <select required class="form-select" id="formAssignmentPriority" name="formAssignmentPriority">
+                        <option selected value="">Choose an option...</option>
+                        <option value="Very High">Very High</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
                     </select>
                 </div>
             </div>
@@ -113,8 +113,10 @@
                     <button type="button" class="btn btn-danger gx-3" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">Delete</button>
                 </div>
                 <div class="form-group col-9 mb-3 d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary gx-3">Cancel</button>
-                    <button type="button" class="btn btn-warning gx-3">Save Changes</button>            
+                    <!-- <button type="button" class="btn btn-primary gx-3">Cancel</button> -->
+                    <!-- button linking from https://stackoverflow.com/questions/2906582/how-do-i-create-an-html-button-that-acts-like-a-link -->
+                    <a href="/studentHome" class="btn btn-primary gx-3">Cancel</a>
+                    <button type="submit" class="btn btn-warning gx-3">Save Changes</button>            
                 </div>
             </div>
         </form>
@@ -134,7 +136,7 @@
             </div>
             <div class="modal-footer">
               <!-- <form action=get from src code again method="get"> -->
-            <form method="get"></form>
+            <form method="post" action="/editTask/delete"><!--</form>-->
                   <input type="submit" class="btn btn-danger" value="Delete">
               </form>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
