@@ -9,7 +9,7 @@ const Student = require('./models/Student')
 const Course = require('./models/Course')
 
 var landingRouter = require('./routes/landing');
-var usersRouter = require('./routes/users');
+// var usersRouter = require('./routes/users');
 const adminSettingsRouter = require('./routes/adminSettings');
 const editTaskRouter = require('./routes/editTask');
 const userSettingsRouter = require('./routes/userSettings');
@@ -39,7 +39,7 @@ app.use(session({
 }))
 
 app.use('/', landingRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 app.use('/adminSettings', adminSettingsRouter);
 app.use('/editTask', editTaskRouter);
 app.use('/userSettings', userSettingsRouter)
