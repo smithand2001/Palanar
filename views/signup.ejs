@@ -7,6 +7,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <style>
 
 /* BASIC */
@@ -18,6 +19,9 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  background-image: url('/images/backgroundimg.png');
+  background-size: cover;
+  background-position: center;
 }
 
 a {
@@ -287,17 +291,19 @@ input[type=text]:placeholder {
 
     <!-- Signup Form -->
     <!--<form method="post" action="/signup"> -->
-    <form id="signup-form" action="/home" method="post">
+    <form id="signup-form" action="/signup" method="post">
       <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
       <input type="text" id="password" class="fadeIn third"  name="password" placeholder="password">
-      <input type="button" class="fadeIn fourth" name="signup" value="Sign Up" onclick="document.getElementById('signup-form').submit();">
+      <input type="submit" class="fadeIn fourth" name="signup" value="Sign Up" onclick="document.getElementById('signup-form').submit();">
 
     </form>
 
     <!-- Remind Signup -->
     <div id="formFooter">
-      <a class="underlineHover" href="../">Already have an account?</a>
+      <a class="underlineHover" href="/login">Already have an account?</a>
     </div>
+
+    
 
 
   </div>
