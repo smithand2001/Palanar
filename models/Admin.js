@@ -6,7 +6,7 @@ class Admin extends Model {
         try {
             const admin = await Admin.findByPk(username)
             if (admin && admin.password === password) {
-                return user
+                return admin
             } else {
                 return null
             }
@@ -24,17 +24,17 @@ Admin.init({
         allowNull: false
     },
     password:{
-        type: DataTypes.String,
+        type: DataTypes.STRING,
         allowNull: false
     },
     firstName:{
-        type: DataTypes.String
+        type: DataTypes.STRING
     },
     lastName:{
-        type: DataTypes.String
+        type: DataTypes.STRING
     },
     phoneNumber:{
-        type: DataTypes.String
+        type: DataTypes.STRING
     }
 }, {
     sequelize,
@@ -42,4 +42,4 @@ Admin.init({
 
 });
 
-module.export = Admin
+module.exports = Admin

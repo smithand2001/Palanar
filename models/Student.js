@@ -3,11 +3,11 @@ const { Model, DataTypes } = require('sequelize')
 
 
 class Student extends Model {
-    static async findUser(username, password) {
+    static async findStudent(username, password) {
         try {
-            const student = await student.findByPk(username)
+            const student = await Student.findByPk(username)
             if (student && student.password === password) {
-                return user
+                return student
             } else {
                 return null
             }
@@ -25,17 +25,17 @@ Student.init({
         allowNull: false
     },
     password:{
-        type: DataTypes.String,
+        type: DataTypes.STRING,
         allowNull: false
     },
     firstName:{
-        type: DataTypes.String
+        type: DataTypes.STRING
     },
     lastName:{
-        type: DataTypes.String
+        type: DataTypes.STRING
     },
     phoneNumber:{
-        type: DataTypes.String
+        type: DataTypes.STRING
     }
 }, {
     sequelize,
@@ -43,4 +43,4 @@ Student.init({
 
 });
 
-module.export = Student
+module.exports = Student

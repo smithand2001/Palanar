@@ -1,0 +1,19 @@
+<% if (locals.Umsg) {%>
+
+<% if (Umsg==="RegisterSuccess" ) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>User</strong> registered successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } else { %>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>User</strong> can not be registered due to errors below.
+            <p class="mb-0">
+                <%=Umsg%>
+            </p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <% }%>
+    <% }%>

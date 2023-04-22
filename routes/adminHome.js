@@ -5,6 +5,9 @@ const Course = require('../models/Course');
 /* GET home page. */
 router.get('/', async function (req, res, next) {
   const courses = await Course.findAll()
+  if(req.query.Umsg){
+    res.locals.Umsg = req.query.Umsg
+  }
   if(req.query.msg){
     res.locals.msg = req.query.msg
     res.locals.courseid = req.query.courseid
