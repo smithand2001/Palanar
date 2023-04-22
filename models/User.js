@@ -1,37 +1,40 @@
-const sequelize = require('../db')
-const { Model, DataTypes} = require('sequelize')
 
-class User extends Model {
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../database/sequelize');
 
-    static async findUser(username, password) {
-        try {
-            const user = await User.findByPk(username)
-            if(user && user.password === password){
-                return user
-            } else{
-                return null
-            }
-        } catch(error) {
-            console.log(error)
-            return null
-        }
-    }
-}
-
-User.init({
-  username: {
-    type: DataTypes.STRING,
-    primaryKey: true,
-    allowNull: false
+class User extends Model {}
+User.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false
+  {
+    sequelize,
+    modelName: 'User',
+    tableName: 'users',
+    timestamps: true,
+    underscored: true,
+    define: {
+      timestamps: true,
+      underscored: true,
+    },
   }
-}, {
-  sequelize, 
-  modelName: 'User' 
-});
+);
 
-
-module.exports = User
+module.exports = User;
