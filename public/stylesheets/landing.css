@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+}
+
+.logIn {
+    color: #18A0FB;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    background-color: #fff;
+    border-color: #18A0FB;
+}
+
+.register {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    background: #18A0FB;
+
+    color: #FFFFFF;
+}
+
+.joinToday {
+    width: 164.57px;
+    height: 52px;
+    background-color: #18A0FB;
+    color: white;
+}
+
+.logo {
+    width: 182px;
+    height: 59px;
+    object-fit: cover;
+}
+
+.landingPhoto {
+    width: 720px;
+    height: 320px;
+    object-fit: contain;
+}
+
+.landingTitle {
+    width: 620px;
+    color: rgba(0, 0, 0, 1);
+    font-family: Montserrat;
+    font-weight: Regular;
+    font-size: 56px;
+    opacity: 1;
+    text-align: left;
+}
+
+.landingDescription {
+    width: 620px;
+    height: 311px;
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    /* or 156% */
+
+    letter-spacing: -0.015em;
+    text-transform: capitalize;
+
+    color: #000000;
+
+    opacity: 0.6;
+}
+
+.aboutUs {
+    position: absolute;
+    width: 69px;
+    height: 18px;
+    left: 241px;
+    top: 21px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #18A0FB;
+}

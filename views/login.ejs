@@ -280,23 +280,20 @@ input[type=text]:placeholder {
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <div class="container-fluid align-content-center"> <h4>Welcome to</h4> </div>
+    <div class="container-fluid align-content-center"> <h4>Course Management System</h4> </div>
     <!-- Icon -->
     <div class="fadeIn first">
       <img src="/images/logo.png" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->
-    <form method="post" action="/login">
+    <form method="post" action="/login/LoggingIn">
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
+      <label for="admin">Check if logging into admin account</label>
+      <input type="checkbox" name="admin">
     </form>
-
-    <!-- Remind Password -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Don't have an account?</a>
-    </div>
 
   </div>
 </div>

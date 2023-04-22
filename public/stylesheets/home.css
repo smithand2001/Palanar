@@ -1,0 +1,17 @@
+.col.NavBar {
+    height: 200px;
+    width: 1920px;
+}
+
+.icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display:inline-block;
+}
+
+.logo{
+    width: 257px;
+    height: 103px;
+    object-fit: cover;
+}
