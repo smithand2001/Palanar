@@ -7,6 +7,7 @@ var seqeuelize = require('./db')
 const session = require('express-session')
 const Student = require('./models/Student')
 const Course = require('./models/Course')
+const Admin = require('./models/Admin')
 
 var landingRouter = require('./routes/landing');
 //var usersRouter = require('./routes/users');
@@ -69,6 +70,7 @@ app.use(function(err, req, res, next) {
 // START OF NEW CODE
 async function setup() {
   const subu = await Student.create({ username: "subu", password: "1234" });
+  const admin = await Admin.create({username: 'abc', password: '123', isAdmin: true})
   console.log("subu instance created...")
   const webdev = await Course.create(
     {
@@ -76,7 +78,8 @@ async function setup() {
       courseName: "Web Development",
       semester: "Spring",
       courseDesc: "Introduction to Web Development",
-      enrollNum: 80
+      enrollNum: 80,
+      AdminUsername: admin.username 
     }
   )
 }
