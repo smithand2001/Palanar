@@ -1,0 +1,11 @@
+<% if(locals.infoAlertResponse) { %>
+    <% if(infoAlertResponse === "success") { %>
+        <div class="alert alert-success" role="alert">
+            Personal information changed successfully!
+        </div>
+    <% } else { %>
+        <div class="alert alert-danger" role="alert">
+            Some error happened!
+        </div>
+    <% } %>
+<% }%>

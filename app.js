@@ -10,11 +10,13 @@ const Course = require('./models/Course')
 
 var landingRouter = require('./routes/landing');
 var usersRouter = require('./routes/users');
+const adminSettingsRouter = require('./routes/adminSettings');
+const editTaskRouter = require('./routes/editTask');
+const userSettingsRouter = require('./routes/userSettings');
 var studentHomeRouter = require('./routes/studentHome');
 var adminHomeRouter = require('./routes/adminHome');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
-
 
 var app = express();
 
@@ -38,6 +40,9 @@ app.use(session({
 
 app.use('/', landingRouter);
 app.use('/users', usersRouter);
+app.use('/adminSettings', adminSettingsRouter);
+app.use('/editTask', editTaskRouter);
+app.use('/userSettings', userSettingsRouter)
 app.use('/studentHome', studentHomeRouter);
 app.use('/adminHome', adminHomeRouter)
 app.use('/login', loginRouter)
