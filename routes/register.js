@@ -18,7 +18,8 @@ router.post('/create', async function (req, res, next) {
                     password: req.body.password,
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
-                    phoneNumber: req.body.phoneNumber
+                    phoneNumber: req.body.phoneNumber,
+                    isAdmin: true
                 }
             )
             res.redirect('/adminHome?Umsg=RegisterSuccess')
