@@ -38,8 +38,8 @@ router.post('/createCourse/create', async function(req,res,next) {
       courseName: req.body.coursename,
       semester: req.body.semester,
       courseDesc: req.body.coursedesc,
-      enrollNum: req.body.enrollnum
-
+      enrollNum: req.body.enrollnum,
+      AdminUsername: req.body.user.username
     }
   )
   res.redirect('/adminHome?msg=success&courseid'+req.body.courseid)

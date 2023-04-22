@@ -26,7 +26,6 @@ router.post('/LoggingIn', async function (req, res, next) {
   // Student User
   else {
     try {
-      console.log("here")
       const user = await Student.findStudent(req.body.username, req.body.password)
       if (user !== null) {
         req.session.user = user

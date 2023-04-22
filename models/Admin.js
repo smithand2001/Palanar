@@ -1,5 +1,6 @@
 const sequelize = require('../db')
 const { Model, DataTypes } = require('sequelize')
+const Course = require('./Course')
 
 class Admin extends Model {
     static async findAdmin(username, password) {
@@ -36,10 +37,19 @@ Admin.init({
     phoneNumber:{
         type: DataTypes.STRING
     }
-}, {
+}, 
+{
     sequelize,
     modelName: 'Admin'
 
 });
+
+// Admin has many Courses, Courses have only one admin, mandatory assoc.
+Admin.hasMany(Course, {
+    foreignKey:{
+        allowNull:false
+    }})
+Course.belongsTo(Admin)
+
 
 module.exports = Admin
