@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Board View</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+      .card-columns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .card {
+        margin: 10px;
+        flex: 1 0 300px;
+      }
+      body {
+            font-family: "Poppins", sans-serif;
+            height: 100vh;
+            background-image: url('/images/smoothbackground.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+  </head>
+  <div class="row">
+    <%- include("header") %>
+</div>
+  <body>
+    <header>
+    </header>
+
+    <div class="container-fluid mt-4">
+      <div class="card-columns">
+        <% tasks.forEach((task) => { %>
+          <div class="card">
+            <div class="card-header">
+              <%= task.title %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= task.taskName %></h5>
+              <p class="card-text">Description: <%= task.taskDescription %></p>
+              <p class="card-text">Due: <%= task.dueDate %></p>
+              <p class="card-text">Task Type: <%= task.taskType %></p>
+              <p class="card-text">Priority: <%= task.taskPriority %></p>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>

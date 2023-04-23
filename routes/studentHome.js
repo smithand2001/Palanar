@@ -23,6 +23,17 @@ router.get('/viewCourses', async function(req,res,next) {
   res.render('viewCourses', {courses, courseCount})
 })
 
+router.get('/boardView', async function(req, res, next) {
+  try {
+    const tasks = await UserTask.findAllTasksOfUser(req.session.user.username);
+    res.render('boardView', { req: req, tasks: tasks });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 router.get("/:courseid", async function(req, res, next) {
   const course = await Course.findCourse(req.params.courseid)
   if(course){

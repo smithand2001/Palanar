@@ -21,11 +21,13 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var logoutRouter = require('./routes/logout')
 
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 
 app.use(logger('dev'));
 app.use(express.json());
