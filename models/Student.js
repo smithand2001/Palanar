@@ -36,6 +36,10 @@ Student.init({
     },
     phoneNumber:{
         type: DataTypes.STRING
+    },
+    isStudent:{
+        type:DataTypes.BOOLEAN,
+        allowNull: false
     }
 }, {
     sequelize,
