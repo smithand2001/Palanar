@@ -14,45 +14,6 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
-    <!-- <div class="container-fluid">
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border border-dark">
-                <div class="container-fluid">
-                  <a class="navbar-brand">
-                    <img class="logo" src="/images/logo.png" alt=""> 
-                </a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="navbar-brand" href="#">
-                            <img src="/images/listimg.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                            List View
-                          </a>
-                          <a class="navbar-brand" href="#">
-                            <img src="/images/square.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                            Board View
-                          </a>
-                          <a class="navbar-brand" href="#">
-                            <img src="/images/course.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                            View Courses
-                          </a>
-                          <a class="navbar-brand" href="#">
-                            <img src="/images/cog.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                            Settings
-                          </a>
-                          <a class="navbar-brand" href="/logout">
-                            <img src="/images/logout.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                            Logout
-                          </a>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-        </div>
-    </div> -->
-
     <%- include("header") %>
 
     <div class="container-sm">
@@ -60,32 +21,32 @@
             <h1>Edit Task</h1>
         </div>
 
-        <form method="POST" action="/editTask/update">
+        <form method="POST" action="/editTask/update/<%=task.dataValues.taskID%>">
             <div class="row g-6">
                 <div class="form-group col mb-3">
                     <label for="formAssignmentName" class="col-form-label-lg">Task Name</label>
-                    <input required type="text" class="form-control" id="formAssignmentName" name="formAssignmentName">
+                    <input required type="text" value="<%= task.dataValues.taskName %>" class="form-control" id="formAssignmentName" name="formAssignmentName">
                 </div>
             </div>
 
             <div class="row g-6">
                 <div class="form-group col mb-3">
                     <label for="formDueDate" class="col-form-label">Due Date</label>
-                    <input required type="date" class="form-control" id="formDueDate" name="formDueDate">
+                    <input required type="date" value="<%= task.dataValues.dueDate %>" class="form-control" id="formDueDate" name="formDueDate">
                 </div>
                 <div class="form-group col mb-3">
                     <label for="formAssignmentType" class="col-form-label">Type</label>
                     <select required class="form-select" id="formAssignmentType" name="formAssignmentType" >
-                        <option selected value="">Choose an option...</option>
-                        <option value="Homework">Homework</option>
-                        <option value="Reading">Reading</option>
-                        <option value="Study">Study</option>
-                        <option value="Quiz">Quiz</option>
-                        <option value="Test">Test</option>
-                        <option value="Lab">Lab</option>
-                        <option value="Project">Project</option>
-                        <option value="Final">Final</option>
-                        <option value="Other">Other</option>
+                        <option <% if(!task.dataValues.taskType) { %> selected <% } %> value="">Choose an option...</option>
+                        <option <% if(task.dataValues.taskType === "Homework") { %> selected <% } %> value="Homework">Homework</option>
+                        <option <% if(task.dataValues.taskType === "Reading") { %> selected <% } %> value="Reading">Reading</option>
+                        <option <% if(task.dataValues.taskType === "Study") { %> selected <% } %>  value="Study">Study</option>
+                        <option <% if(task.dataValues.taskType === "Quiz") { %> selected <% } %>  value="Quiz">Quiz</option>
+                        <option <% if(task.dataValues.taskType === "Test") { %> selected <% } %>  value="Test">Test</option>
+                        <option <% if(task.dataValues.taskType === "Lab") { %> selected <% } %>  value="Lab">Lab</option>
+                        <option <% if(task.dataValues.taskType === "Project") { %> selected <% } %>  value="Project">Project</option>
+                        <option <% if(task.dataValues.taskType === "Final") { %> selected <% } %> value="Final">Final</option>
+                        <option <% if(task.dataValues.taskType === "Other") { %> selected <% } %> value="Other">Other</option>
                     </select>
                 </div>
             </div>
@@ -93,16 +54,16 @@
             <div class="row g-6">
                 <div class="form-group col mb-3">
                     <label for="formAssignmentClass" class="col-form-label">Class</label>
-                    <input required type="text" class="form-control" id="formAssignmentClass" name="formAssignmentClass"> 
+                    <input required type="text" value="<%= task.dataValues.taskClass %>" class="form-control" id="formAssignmentClass" name="formAssignmentClass"> 
                 </div>
                 <div class="form-group col mb-3">
                     <label for="formAssignmentPriority" class="col-form-label">Priority</label>
                     <select required class="form-select" id="formAssignmentPriority" name="formAssignmentPriority">
-                        <option selected value="">Choose an option...</option>
-                        <option value="Very High">Very High</option>
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
+                        <option <% if(!task.dataValues.taskPriority) { %> selected <% } %> value="">Choose an option...</option>
+                        <option <% if(task.dataValues.taskPriority === "Very High") { %> selected <% } %> value="Very High">Very High</option>
+                        <option <% if(task.dataValues.taskPriority === "High") { %> selected <% } %>value="High">High</option>
+                        <option <% if(task.dataValues.taskPriority === "Medium") { %> selected <% } %>value="Medium">Medium</option>
+                        <option <% if(task.dataValues.taskPriority === "Low") { %> selected <% } %>value="Low">Low</option>
                     </select>
                 </div>
             </div>
@@ -110,7 +71,7 @@
             <div class="row g-6">
                 <div class="form-group col mb-3">
                     <label for="formAssignmentDescription" class="col-form-label">Description</label>
-                    <textarea class="form-control" id="formAssignmentDescription" name="formAssignmentDescription" rows="4"></textarea>
+                    <textarea class="form-control" id="formAssignmentDescription" name="formAssignmentDescription" rows="4"><% if(task.dataValues.taskDescription !== "") { %><%= task.dataValues.taskDescription %> <% } %></textarea>
                 </div>
             </div>
 
@@ -121,7 +82,7 @@
                 <div class="form-group col-9 mb-3 d-flex justify-content-end">
                     <!-- <button type="button" class="btn btn-primary gx-3">Cancel</button> -->
                     <!-- button linking from https://stackoverflow.com/questions/2906582/how-do-i-create-an-html-button-that-acts-like-a-link -->
-                    <a href="/studentHome" class="btn btn-primary gx-3">Cancel</a>
+                    <a href="/studentHome" class="btn btn-primary gx-3">Return</a>
                     <button type="submit" class="btn btn-warning gx-3">Save Changes</button>            
                 </div>
             </div>
@@ -144,7 +105,7 @@
             </div>
             <div class="modal-footer">
               <!-- <form action=get from src code again method="get"> -->
-            <form method="post" action="/editTask/delete"><!--</form>-->
+            <form method="post" action="/editTask/delete/<%=task.dataValues.taskID%>"><!--</form>-->
                   <input type="submit" class="btn btn-danger" value="Delete">
               </form>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
