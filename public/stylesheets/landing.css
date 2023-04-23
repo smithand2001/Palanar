@@ -99,3 +99,51 @@ body {
     letter-spacing: -0.015em;
     color: #18A0FB;
 }
+
+.upcoming{
+    width: 620px;
+    height: 311px;
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 50px;
+    /* or 156% */
+
+    letter-spacing: -0.015em;
+    text-transform: capitalize;
+
+    color: #003d83;
+}
+
+.update{
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    /* or 156% */
+
+    letter-spacing: -0.015em;
+    text-transform: capitalize;
+    color: #1a61b3;
+}
+
+.carouselImage{
+    width: 900px;
+    height: 800px;
+    object-fit: contain;
+}
+
+h5{
+    color: #000000;
+
+    opacity: 0.6;
+}
+
+p{
+    color: #000000;
+
+    opacity: 0.6;
+}
