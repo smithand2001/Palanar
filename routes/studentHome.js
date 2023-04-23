@@ -59,7 +59,24 @@ router.get('/viewCourses', async function (req, res, next) {
 router.get('/boardView', async function (req, res, next) {
   try {
     const tasks = await UserTask.findAllTasksOfUser(req.session.user.username);
-    res.render('boardView', { req: req, tasks: tasks });
+
+    const isEnrolled = await Enrolled.findAllEnrolled(req.session.user.username);
+
+    // get all tasks for enrolled courses
+    const courseTaskList = [];
+    const courseIDs = [];
+    // console.log(isEnrolled);
+    for(const cr of isEnrolled)
+    {
+      courseIDs.push(cr.dataValues.CourseCourseid);
+      courseTaskList.push(await CourseTask.findAllTasksOfCourse(cr.dataValues.CourseCourseid));
+    }
+    // console.log(courseTaskList);
+    const courseAndTasks = {};
+    courseIDs.forEach((key, i) => courseAndTasks[key] = courseTaskList[i]);
+    console.log(courseAndTasks);
+
+    res.render('boardView', { req: req, tasks: tasks, courseAndTasks: courseAndTasks });
   } catch (error) {
     console.log(error);
     res.status(500).send('Internal Server Error');

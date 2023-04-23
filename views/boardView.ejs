@@ -8,7 +8,8 @@
       .card-columns {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: left;
       }
       
       .card {
@@ -34,19 +35,36 @@
     <div class="container-fluid mt-4">
       <div class="card-columns">
         <% tasks.forEach((task) => { %>
-          <div class="card">
+          <div class="col-2 card">
             <div class="card-header">
               <%= task.title %>
             </div>
             <div class="card-body">
               <h5 class="card-title"><%= task.taskName %></h5>
+              <p class="card-text">Class: <%= task.taskClass%></p>
               <p class="card-text">Description: <%= task.taskDescription %></p>
               <p class="card-text">Due: <%= task.dueDate %></p>
               <p class="card-text">Task Type: <%= task.taskType %></p>
               <p class="card-text">Priority: <%= task.taskPriority %></p>
             </div>
           </div>
-        <% }) %>
+          <% }) %>
+          <% for([course, ctasks] of Object.entries(courseAndTasks)) { %>
+            <% for(ctask of ctasks) { %>
+              <div class="col-2 card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                <h5 class="card-title"><%= ctask.dataValues.ctaskName %></h5>
+                <p class="card-text">Class: <%= ctask.dataValues.CourseCourseid%></p>
+                <p class="card-text">Description: <%= ctask.dataValues.ctaskDescription %></p>
+                <p class="card-text">Due: <%= ctask.dataValues.cdueDate %></p>
+                <p class="card-text">Task Type: <%= ctask.dataValues.ctaskType %></p>
+                <p class="card-text">Priority: <%= ctask.dataValues.ctaskPriority %></p>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
       </div>
     </div>
   </body>
