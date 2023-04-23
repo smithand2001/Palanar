@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const UserTask = require('../models/UserTask');
+const CourseTask = require('../models/CourseTask');
 const Course = require('../models/Course')
 const Student = require('../models/Student')
 const Enrolled = require('../models/Enrolled')
@@ -25,8 +26,23 @@ router.get('/', async function (req, res, next) {
   // {
   //   console.log(task.dataValues);
   // }
-  const isEnrolled = await Enrolled.findAllEnrolled(req.session.user.username)
-  res.render('studentHome', { req: req, tasks: tasks, isEnrolled: isEnrolled });
+  const isEnrolled = await Enrolled.findAllEnrolled(req.session.user.username);
+
+  // get all tasks for enrolled courses
+  const courseTaskList = [];
+  const courseIDs = [];
+  // console.log(isEnrolled);
+  for(const cr of isEnrolled)
+  {
+    courseIDs.push(cr.dataValues.CourseCourseid);
+    courseTaskList.push(await CourseTask.findAllTasksOfCourse(cr.dataValues.CourseCourseid));
+  }
+  // console.log(courseTaskList);
+  const courseAndTasks = {};
+  courseIDs.forEach((key, i) => courseAndTasks[key] = courseTaskList[i]);
+  // console.log(courseAndTasks);
+
+  res.render('studentHome', { req: req, tasks: tasks, isEnrolled: isEnrolled, courseAndTasks : courseAndTasks});
 
   // get all of the user's user tasks
   // console.log("hello");
