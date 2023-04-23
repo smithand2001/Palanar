@@ -15,7 +15,21 @@ class Enrolled extends Model {
             console.log(error)
             return null
         }
-    }
+    };
+    // get all enrolled corresponding to the current user
+    static async findAllEnrolledCourses(courseid) {
+        try {
+            const enrolled = await Enrolled.findAll({where: {CourseCourseid: courseid}})
+            if (enrolled) {
+                return enrolled
+            } else {
+                return null
+            }
+        } catch (error) {
+            console.log(error)
+            return null
+        }
+    };
     static async isEnrolled(username, courseid){
         try{
             const enrolled = await Enrolled.findAll({
@@ -33,7 +47,7 @@ class Enrolled extends Model {
             console.log(error)
             return null
         }
-    }
+    };
 }
 
 Enrolled.init({

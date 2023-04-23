@@ -108,6 +108,12 @@
   Delete Course
 </button> -->
     <% if (isAdmin===true) {%>
+      <form action=<%="/adminHome/viewStudents/" +course.courseid %> method="get">
+        <div class="form-group">
+          <input type="submit" value="View Students" class="btn btn-info"></button>
+        </div>
+      </form>
+      <br>
       <a class="btn btn-primary" href="/adminHome" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">
         Delete Course
       </a>

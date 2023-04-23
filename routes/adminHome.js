@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Course = require('../models/Course');
 const Admin = require('../models/Admin');
+const Enrolled = require('../models/Enrolled')
 
 const sessionChecker = (req, res, next)=> {
   if(req.session.user === undefined)
@@ -80,6 +81,12 @@ router.get("/delete/:courseid", async function(req, res, next) {
   }else{
     res.redirect('/adminHome/?msg=course+not+found&?courseid='+req.params.courseid)
   }
+})
+
+router.get("/viewStudents/:courseid", async function(req, res, next) {
+  const students = await Enrolled.findAllEnrolledCourses(req.params.courseid)
+  console.log(students)
+  res.render("viewStudents", {courseid: req.params.courseid, students})
 })
 
 
