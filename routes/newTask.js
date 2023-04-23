@@ -3,14 +3,22 @@ const router = express.Router();
 const UserTask = require('../models/UserTask');
 
 router.get('/', function(req, res, next) {
-    res.render("newTask");
+    // res.render("newTask");
+    if(req.query.tar)
+    {
+        res.render("newTask", { taskAlertResponse : req.query.tar } );
+    }
+    else
+    {
+        res.render("newTask");
+    }
 })
 
 // invoked when user presses "Add Task"
 // should add new task to DB
 router.post('/create', async function(req, res, next) {
     console.log("in task create handler");
-    console.log(req.body);
+    // console.log(req.body);
 
     let taskAlertResponse = "error";
 

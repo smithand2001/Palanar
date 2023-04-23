@@ -7,7 +7,7 @@ const router = express.Router();
 // task information
 router.get('/:taskID', async function(req, res, next) {
     const task = await UserTask.findTask(req.params.taskID);
-    console.log(task);
+    // console.log(task);
 
     if(req.query.tar)
     {
@@ -48,6 +48,18 @@ router.post('/update/:taskID', async function(req, res, next) {
 router.post('/delete/:taskID', async function(req, res, next) {
     console.log("in task delete handler");
     // console.log(req.params.taskID);
+
+    try {
+        const task = await UserTask.findTask(req.params.taskID)
+        if(task)
+        {
+            await task.destroy();
+            res.redirect("/newTask?tar=successDelete");
+        }
+    } catch(error) {
+        console.log(error);
+        res.redirect("/editTask/" + req.params.taskID + "?tar=error"); 
+    }
 })
 
 // invoked when the user presses "Delete"
