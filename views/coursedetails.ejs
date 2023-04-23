@@ -14,7 +14,11 @@
 
   <div class="container-fluid align-content-center">
     <div class="row">
-      <%- include("header") %>
+      <% if(session.isAdmin) { %>
+        <%- include("adminHeader") %>
+      <% } else { %>
+        <%- include("header") %>
+      <% } %>
     </div>
     <h1 class="display-6">Course Details</h1>
   </div>

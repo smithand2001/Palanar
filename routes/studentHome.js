@@ -90,7 +90,7 @@ router.get("/:courseid", async function (req, res, next) {
   const enrolled = await Enrolled.isEnrolled(req.session.user.username, req.params.courseid)
   console.log(enrolled)
   if (course) {
-    res.render('coursedetails', { course, isAdmin, enrolled})
+    res.render('coursedetails', { course, isAdmin, enrolled, session : req.session})
 
   } else {
     res.redirect('/studentHome/?msg=course+not+found&?courseid=' + req.params.courseid)

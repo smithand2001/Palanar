@@ -65,7 +65,7 @@ router.get("/:courseid", async function(req, res, next) {
   const course = await Course.findCourse(req.params.courseid)
   const isAdmin = true
   if(course){
-    res.render('coursedetails', {course, isAdmin})
+    res.render('coursedetails', {course, isAdmin, session : req.session})
 
   }else{
     res.redirect('/adminHome/?msg=course+not+found&?courseid='+req.params.courseid)
