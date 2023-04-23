@@ -5,7 +5,7 @@ class UserTask extends Model {
     // get all user tasks corresponding to the current user
     static async findAllTasksOfUser(_username) {
         try {
-            const tasks = await UserTask.findAll({where: {username: _username}})
+            const tasks = await UserTask.findAll({where: {Studentusername: _username}})
             if (tasks) {
                 return tasks
             } else {
@@ -14,6 +14,16 @@ class UserTask extends Model {
         } catch (error) {
             console.log(error)
             return null
+        }
+    }
+
+    static async findTask(taskID) {
+        try {
+            const task = await UserTask.findByPk(taskID);
+            return task ? task : null;
+        } catch (error) {
+            console.log(error);
+            return null;
         }
     }
 }
