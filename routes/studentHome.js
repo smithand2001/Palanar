@@ -25,7 +25,8 @@ router.get('/', async function(req, res, next) {
   // {
   //   console.log(task.dataValues);
   // }
-  res.render('studentHome', {req: req, tasks : tasks});
+  const isEnrolled = await Enrolled.findAllEnrolled(req.session.user.username)
+  res.render('studentHome', {req: req, tasks : tasks, isEnrolled:isEnrolled});
 
   // get all of the user's user tasks
   // console.log("hello");
@@ -65,7 +66,7 @@ router.get("/:courseid", async function(req, res, next) {
     res.render('coursedetails', { course, isAdmin })
 
   } else {
-    res.redirect('/courses/?msg=course+not+found&?courseid=' + req.params.courseid)
+    res.redirect('/studentHome/?msg=course+not+found&?courseid=' + req.params.courseid)
   }
 })
 
@@ -77,9 +78,7 @@ router.get('/enroll/:courseid', async function (req, res, next) {
       res.redirect('/studentHome/?msg=course+enrollment+is+full&?courseid=' + req.params.courseid)
     }
     else {
-      course.set({
-        enrollCount: course.enrollCount + 1
-      })
+      await course.increment('enrollCount')
       await user.addCourses(course)
       res.redirect('/studentHome/?msg=successEnroll&?courseid=' + req.params.courseid)
     }

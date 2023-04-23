@@ -46,7 +46,7 @@ router.get("/:courseid", async function(req, res, next) {
     res.render('coursedetails', {course, isAdmin})
 
   }else{
-    res.redirect('/courses/?msg=course+not+found&?courseid='+req.params.courseid)
+    res.redirect('/adminHome/?msg=course+not+found&?courseid='+req.params.courseid)
   }
 })
 
