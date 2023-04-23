@@ -1,6 +1,8 @@
 const sequelize = require('../db')
 const { Model, DataTypes } = require('sequelize')
 const Student = require('./Student')
+const Enrolled = require ('./Enrolled')
+
 
 class Course extends Model {
 
@@ -47,8 +49,8 @@ Course.init({
 });
 
 // one student belongs to many courses, on course has many students, junction table = enrolled
-Student.belongsToMany(Course, { through: 'enrolled'});
-Course.belongsToMany(Student, { through: 'enrolled'});
+Student.belongsToMany(Course, { through: Enrolled});
+Course.belongsToMany(Student, { through: Enrolled});
 
 
 module.exports = Course

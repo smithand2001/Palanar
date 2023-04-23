@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
 
 // Register submit button
 router.post('/create', async function (req, res, next) {
-    // Student account
+    // Admin account
     if (req.body.admin === 'on') {
         try {
             await Admin.create(
@@ -22,6 +22,8 @@ router.post('/create', async function (req, res, next) {
                     isAdmin: true
                 }
             )
+            req.session.user = await Admin.findAdmin(req.body.username, req.body.password)
+            req.session.isAdmin = true
             res.redirect('/adminHome?Umsg=RegisterSuccess')
     
         } catch (error) {
@@ -37,9 +39,12 @@ router.post('/create', async function (req, res, next) {
                     password: req.body.password,
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
-                    phoneNumber: req.body.phoneNumber
+                    phoneNumber: req.body.phoneNumber,
+                    isStudent: true
                 }
             )
+            req.session.user = await Student.findStudent(req.body.username, req.body.password)
+            req.session.isStudent = true
             res.redirect('/studentHome?Umsg=RegisterSuccess')
     
         } catch (error) {
