@@ -47,7 +47,39 @@
             </div>
 
           <% } %>
-          
+
+          <!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries -->
+          <% for([course, tasks] of Object.entries(coursesAndTasks)) { %>
+            <div class="row">
+              <div class="d-flex justify-content-center border-top border-bottom border-dark ">
+                  <h2><%= course %> Course Tasks</h2>
+              </div>
+            </div>
+
+            <div class="row">
+                  <% if(tasks.length === 0) {%>
+                    <h4>There are currently no course tasks for <%= course %>!</h4>
+                  <% } else { %>
+                    <% for(task of tasks) { %>
+                      <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= task.dataValues.ctaskName %></h5>
+                          <p class="card-text"><%= task.dataValues.ctaskDescription %></p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Due Date: <%= task.dataValues.cdueDate %></li>
+                          <li class="list-group-item">Type: <%= task.dataValues.ctaskType %></li>
+                          <li class="list-group-item">Priority: <%= task.dataValues.ctaskPriority %></li>
+                        </ul>
+                        <div class="card-body">
+                          <a href=<%= "/editCourseTask/"+task.dataValues.ctaskID %> class="card-link">Edit</a>
+                        </div>
+                      </div>
+                    <% } %>
+                  <% } %>
+              </div>
+              
+          <% } %>
         </div>
       </div>
 </body>

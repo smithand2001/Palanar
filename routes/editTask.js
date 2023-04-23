@@ -6,7 +6,7 @@ const router = express.Router();
 // should bring up the Edit Task screen, fill in with all existing
 // task information
 router.get('/:taskID', async function(req, res, next) {
-    const task = await UserTask.findTask(req.params.taskID);
+    const task = await UserTask.findCourseTask(req.params.taskID);
     // console.log(task);
 
     if(req.query.tar)

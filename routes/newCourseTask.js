@@ -20,7 +20,16 @@ router.get('/', async function(req, res, next) {
     // get all the instructor's courses
     const instructorCourses = await Course.findInstructorsCourses(req.session.user.username);
 
-    res.render("newCourseTask", { instructorCourses });
+    // res.render("newCourseTask", { instructorCourses });
+
+    if(req.query.tar)
+    {
+        res.render("newCourseTask", { instructorCourses, taskAlertResponse : req.query.tar } );
+    }
+    else
+    {
+        res.render("newCourseTask", { instructorCourses });
+    }
 })
 
 router.post('/create', async function(req, res, next) {

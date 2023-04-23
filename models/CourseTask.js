@@ -1,9 +1,35 @@
 const sequelize = require('../db');
 const { Model, DataTypes } = require('sequelize');
-const Course = require('./Course')
 
 class CourseTask extends Model {
+    static async findAllTasksOfCourse(courseid)
+    {
+        try {
+            const tasks = await CourseTask.findAll({where: {CourseCourseid: courseid}});
+            if(tasks)
+            {
+                return tasks;
+            }
+            else
+            {
+                return null;
+            }
+        } catch(error) {
+            console.log(error);
+            return null;
+        }
+    }
 
+    static async findCourseTask(ctaskID)
+    {
+        try {
+            const task = await CourseTask.findByPk(ctaskID);
+            return task ? task : null;
+        } catch(error) {
+            console.log(error);
+            return null;
+        }
+    }
 }
 
 CourseTask.init({
