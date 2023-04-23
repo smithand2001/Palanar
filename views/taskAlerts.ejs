@@ -1,0 +1,19 @@
+<% if(locals.taskAlertResponse) { %>
+    <% if(taskAlertResponse === "successAdd") { %>
+        <div class="alert alert-success" role="alert">
+            Task added successfully!
+        </div>
+    <% } else if(taskAlertResponse === "successEdit") { %>
+        <div class="alert alert-success" role="alert">
+            Task edited successfully!
+        </div>
+    <% } else if(taskAlertResponse === "successDelete") { %>
+        <div class="alert alert-success" role="alert">
+            Task deleted successfully!
+        </div>
+    <% } else { %>
+        <div class="alert alert-danger" role="alert">
+            Some error happened! Task not added/edited/deleted.
+        </div>
+    <% } %>
+<% }%>
