@@ -17,10 +17,10 @@ router.post('/LoggingIn', async function (req, res, next) {
         req.session.user = user
         res.redirect('/adminHome?Lmsg=LogInSuccess')
       } else {
-        res.redirect('/?msg=fail')
+        res.redirect('/login?msg=fail')
       }
     } catch (error) {
-      res.redirect('/?Lmsg=' + new URLSearchParams(error.toString()).toString())
+      res.redirect('/login?Lmsg=' + new URLSearchParams(error.toString()).toString())
     }
   }
   // Student User
@@ -30,12 +30,12 @@ router.post('/LoggingIn', async function (req, res, next) {
       const user = await Student.findStudent(req.body.username, req.body.password)
       if (user !== null) {
         req.session.user = user
-        res.redirect('/studenthome?Lmsg=LogInSuccess')
+        res.redirect('/studentHome?Lmsg=LogInSuccess')
       } else {
-        res.redirect('/?msg=fail')
+        res.redirect('/login?msg=fail')
       }
     } catch (error) {
-      res.redirect('/register?Lmsg=' + new URLSearchParams(error.toString()).toString())
+      res.redirect('/login?Lmsg=' + new URLSearchParams(error.toString()).toString())
     }
   }
 })

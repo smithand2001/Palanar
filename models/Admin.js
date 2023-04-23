@@ -48,9 +48,10 @@ Admin.init({
 });
 // Admin has many Courses, Courses have only one admin, mandatory assoc.
 Admin.hasMany(Course, {
+    onDelete: 'CASCADE',
     foreignKey:{
         allowNull:false
     }})
-Course.belongsTo(Admin)
+Course.belongsTo(Admin, {onDelete: 'CASCADE'})
 
 module.exports = Admin
