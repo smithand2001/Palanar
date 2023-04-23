@@ -1,6 +1,6 @@
 const sequelize = require('../db')
 const { Model, DataTypes } = require('sequelize')
-
+const UserTask = require('./UserTask')
 
 class Student extends Model {
     static async findStudent(username, password) {
@@ -46,5 +46,10 @@ Student.init({
     modelName: 'Student'
 
 });
+
+Student.hasMany(UserTask, {
+    allowNull: false})
+
+UserTask.belongsTo(Student)
 
 module.exports = Student
