@@ -5,10 +5,10 @@ const UserTask = require('../models/UserTask');
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   const tasks = await UserTask.findAllTasksOfUser(req.session.user.username);
-  for(task of tasks)
-  {
-    console.log(task.dataValues);
-  }
+  // for(task of tasks)
+  // {
+  //   console.log(task.dataValues);
+  // }
   res.render('studentHome', {req: req, tasks : tasks});
 
   // get all of the user's user tasks
