@@ -15,6 +15,7 @@ router.post('/LoggingIn', async function (req, res, next) {
       const user = await Admin.findAdmin(req.body.username, req.body.password)
       if (user !== null) {
         req.session.user = user
+        req.session.isAdmin = true
         res.redirect('/adminHome?Lmsg=LogInSuccess')
       } else {
         res.redirect('/?msg=fail')
@@ -30,6 +31,7 @@ router.post('/LoggingIn', async function (req, res, next) {
       const user = await Student.findStudent(req.body.username, req.body.password)
       if (user !== null) {
         req.session.user = user
+        req.session.isStudent = true
         res.redirect('/studenthome?Lmsg=LogInSuccess')
       } else {
         res.redirect('/?msg=fail')

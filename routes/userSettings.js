@@ -18,6 +18,11 @@ router.post('/updatePassSubmit', function(req, res, next) {
         let passAlertResponse = "success";
         // TODO - update the DB accordingly
         res.render("userSettings", { passAlertResponse });
+
+        //Store session data
+        req.session.passAlertResponse = passAlertResponse;
+
+        res.render("userSettings", { passAlertResponse });
     }
     else
     {
@@ -31,6 +36,9 @@ router.post('/updateInfoSubmit', function(req, res, next) {
     console.log(req.body);
 
     // TODO - update the DB accordingly
+
+    
+    req.session.infoAlertResponse = infoAlertResponse;
 
     let infoAlertResponse = "success"
     res.render("userSettings", { infoAlertResponse });

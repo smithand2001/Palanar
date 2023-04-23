@@ -69,7 +69,7 @@ app.use(function(err, req, res, next) {
 
 // START OF NEW CODE
 async function setup() {
-  const subu = await Student.create({ username: "subu", password: "1234" });
+  const subu = await Student.create({ username: "subu", password: "1234", isStudent: true });
   const admin = await Admin.create({username: 'abc', password: '123', isAdmin: true})
   console.log("subu instance created...")
   const webdev = await Course.create(
