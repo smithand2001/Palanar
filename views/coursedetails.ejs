@@ -68,6 +68,17 @@
           <hr>
           <div class="row">
             <div class="col-sm-3">
+              <p class="mb-0">Enrollment:</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-primary mb-0">
+                <%= course.enrollNum %>
+              </p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
               <p class="mb-0">Instructor</p>
             </div>
             <div class="col-sm-9">
@@ -96,15 +107,15 @@
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Delete Course
 </button> -->
-    <% if (isAdmin === true) {%>
+    <% if (isAdmin===true) {%>
       <a class="btn btn-primary" href="/adminHome" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">
         Delete Course
       </a>
       <a class="btn btn-secondary" href="/adminHome" role="button">
         Back to Home
       </a>
-       <!-- Modal -->
-       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -125,32 +136,39 @@
         </div>
       </div>
       <%} else {%>
-        <a class="btn btn-primary" href="/studentHome" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">
-          Enroll
+        <form action=<%="/studentHome/enroll/" +course.courseid %> method="get">
+          <div class="form-group">
+            <input type="submit" value="Enroll" class="btn btn-primary"></button>
+          </div>
+        </form>
+        <br>
+        <a class="btn btn-danger" href="/studentHome" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          role="button">
+          Unenroll
         </a>
         <!-- Modal -->
-       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Course Enrollment</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              This operation can not be reversed. Are you sure want to proceed?
-            </div>
-            <div class="modal-footer">
-              <form action=<%="/studentHome/enroll/" +course.courseid %> method="get">
-                <input type="submit" class="btn btn-danger" value="Enroll">
-              </form>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <!-- <button type="button" class="btn btn-danger">Save changes</button> -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Course Enrollment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                This operation can not be reversed. Are you sure want to proceed?
+              </div>
+              <div class="modal-footer">
+                <form action=<%="/studentHome/unenroll/" +course.courseid %> method="get">
+                  <input type="submit" class="btn btn-danger" value="Enroll">
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-danger">Save changes</button> -->
+              </div>
             </div>
           </div>
         </div>
-      </div>
         <% } %>
-     
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
