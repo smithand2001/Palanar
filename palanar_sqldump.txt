@@ -1,0 +1,18 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE `Students` (`username` VARCHAR(255) NOT NULL PRIMARY KEY, `password` VARCHAR(255) NOT NULL, `firstName` VARCHAR(255), `lastName` VARCHAR(255), `phoneNumber` VARCHAR(255), `isStudent` TINYINT(1) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+INSERT INTO Students VALUES('subu','1234',NULL,NULL,NULL,1,'2023-04-23 21:11:15.576 +00:00','2023-04-23 21:11:15.576 +00:00');
+CREATE TABLE `UserTasks` (`taskID` INTEGER PRIMARY KEY AUTOINCREMENT, `taskName` VARCHAR(255) NOT NULL, `dueDate` VARCHAR(255) NOT NULL, `taskType` VARCHAR(255) NOT NULL, `taskClass` VARCHAR(255) NOT NULL, `taskPriority` VARCHAR(255) NOT NULL, `taskDescription` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `StudentUsername` VARCHAR(255) REFERENCES `Students` (`username`) ON DELETE SET NULL ON UPDATE CASCADE);
+INSERT INTO UserTasks VALUES(1,'Homework 1','2023-04-28','Homework','UW-CSE403','High','Full-stack web app.','2023-04-23 21:11:15.588 +00:00','2023-04-23 21:11:15.588 +00:00','subu');
+INSERT INTO UserTasks VALUES(2,'Final Exam','2023-05-01','Test','UW-CSE403','Very High','Final exam.','2023-04-23 21:11:15.592 +00:00','2023-04-23 21:11:15.592 +00:00','subu');
+CREATE TABLE `Admins` (`username` VARCHAR(255) NOT NULL PRIMARY KEY, `password` VARCHAR(255) NOT NULL, `firstName` VARCHAR(255), `lastName` VARCHAR(255), `phoneNumber` VARCHAR(255), `isAdmin` TINYINT(1) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+INSERT INTO Admins VALUES('abc','123',NULL,NULL,NULL,1,'2023-04-23 21:11:15.582 +00:00','2023-04-23 21:11:15.582 +00:00');
+CREATE TABLE `Courses` (`courseid` VARCHAR(255) NOT NULL PRIMARY KEY, `courseName` VARCHAR(255) NOT NULL, `semester` VARCHAR(255) NOT NULL, `courseDesc` TEXT NOT NULL, `enrollNum` INTEGER NOT NULL, `enrollCount` INTEGER NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `AdminUsername` VARCHAR(255) NOT NULL REFERENCES `Admins` (`username`) ON DELETE CASCADE ON UPDATE CASCADE);
+INSERT INTO Courses VALUES('CPTS489','Web Development','Spring','Introduction to Web Development',80,0,'2023-04-23 21:11:15.585 +00:00','2023-04-23 21:11:15.585 +00:00','abc');
+CREATE TABLE `Enrolleds` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `StudentUsername` VARCHAR(255) REFERENCES `Students` (`username`) ON DELETE CASCADE ON UPDATE CASCADE, `CourseCourseid` VARCHAR(255) REFERENCES `Courses` (`courseid`) ON DELETE CASCADE ON UPDATE CASCADE, UNIQUE (`StudentUsername`, `CourseCourseid`));
+CREATE TABLE `CourseTasks` (`ctaskID` INTEGER PRIMARY KEY AUTOINCREMENT, `ctaskName` VARCHAR(255) NOT NULL, `cdueDate` VARCHAR(255) NOT NULL, `ctaskType` VARCHAR(255) NOT NULL, `ctaskPriority` VARCHAR(255) NOT NULL, `ctaskDescription` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `CourseCourseid` VARCHAR(255) NOT NULL REFERENCES `Courses` (`courseid`) ON DELETE CASCADE ON UPDATE CASCADE);
+INSERT INTO CourseTasks VALUES(1,'Our Actual Final Exam','2023-05-03','Test','Very High','In-class practical final exam. Working with databases and data validation.','2023-04-23 21:11:15.596 +00:00','2023-04-23 21:11:15.596 +00:00','CPTS489');
+DELETE FROM sqlite_sequence;
+INSERT INTO sqlite_sequence VALUES('UserTasks',2);
+INSERT INTO sqlite_sequence VALUES('CourseTasks',1);
+COMMIT;
