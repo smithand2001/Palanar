@@ -1,6 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
+const sessionChecker = (req, res, next)=> {
+    if(req.session.user === undefined)
+    {
+      res.redirect("/login")
+    }
+    else if(req.session.user.isAdmin){
+      next()
+    } else{
+      res.redirect("/?msg=raf")
+    }
+  }
+  router.use(sessionChecker)
+
 router.get('/', function(req, res, next) {
     res.render("adminSettings");
 })
