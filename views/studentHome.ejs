@@ -24,7 +24,21 @@
                 <h2>Enrolled Courses</h2>
             </div>
             <div class="col-8 border border-dark border-bottom-0">
-                <h3>All Tasks for </h3>
+                <h3>All Tasks for <%= req.session.user.username %></h3>
+                <% if(tasks) { %>
+                    <% for(task of tasks) { %>
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title"><%= task.dataValues.taskName %></h5>
+                              <h6 class="card-subtitle mb-2 text-muted"><%= task.dataValues.taskType %></h6>
+                              <h6 class="card-subtitle mb-2 text-muted">Due: <%= task.dataValues.dueDate %></h6>
+                              <h6 class="card-subtitle mb-2 text-muted">Priority: <%= task.dataValues.taskPriority %></h6>
+                              <p class="card-text"><%= task.dataValues.taskDescription %></p>
+                              <a href="<%= "/editTask/"+task.dataValues.taskID%>" class="card-link">Edit</a>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
             </div>
         </div>
       </div>
