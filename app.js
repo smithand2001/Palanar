@@ -12,6 +12,7 @@ var landingRouter = require('./routes/landing');
 // var usersRouter = require('./routes/users');
 const adminSettingsRouter = require('./routes/adminSettings');
 const editTaskRouter = require('./routes/editTask');
+const newTaskRouter = require('./routes/newTask');
 const userSettingsRouter = require('./routes/userSettings');
 var studentHomeRouter = require('./routes/studentHome');
 var adminHomeRouter = require('./routes/adminHome');
@@ -42,6 +43,7 @@ app.use('/', landingRouter);
 // app.use('/users', usersRouter);
 app.use('/adminSettings', adminSettingsRouter);
 app.use('/editTask', editTaskRouter);
+app.use('/newTask', newTaskRouter);
 app.use('/userSettings', userSettingsRouter)
 app.use('/studentHome', studentHomeRouter);
 app.use('/adminHome', adminHomeRouter)
