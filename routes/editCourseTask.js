@@ -3,6 +3,19 @@ const CourseTask = require('../models/CourseTask');
 const Course = require('../models/Course');
 const router = express.Router();
 
+const sessionChecker = (req, res, next)=> {
+    if(req.session.user === undefined)
+    {
+      res.redirect("/login")
+    }
+    else if(req.session.user.isAdmin){
+      next()
+    } else{
+      res.redirect("/?msg=raf")
+    }
+  }
+  router.use(sessionChecker)
+
 router.get('/:taskID', async function(req, res, next) {
     const task = await CourseTask.findCourseTask(req.params.taskID);
     const instructorCourses = await Course.findInstructorsCourses(req.session.user.username);

@@ -2,6 +2,18 @@ const express = require('express');
 const Student = require('../models/Student');
 const router = express.Router();
 
+const sessionChecker = (req, res, next) => {
+    if (req.session.user === undefined) {
+      res.redirect("/login")
+    }
+    if (req.session.user.isStudent) {
+      next()
+    } else {
+      res.redirect("/?msg=raf")
+    }
+  }
+  router.use(sessionChecker)
+
 // TODO - update to include the information of the user themselves
 router.get('/', function(req, res, next) {
     // console.log(req.session);

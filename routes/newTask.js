@@ -2,6 +2,18 @@ const express = require('express');
 const router = express.Router();
 const UserTask = require('../models/UserTask');
 
+const sessionChecker = (req, res, next) => {
+    if (req.session.user === undefined) {
+      res.redirect("/login")
+    }
+    if (req.session.user.isStudent) {
+      next()
+    } else {
+      res.redirect("/?msg=raf")
+    }
+  }
+  router.use(sessionChecker)
+
 router.get('/', function(req, res, next) {
     // res.render("newTask");
     if(req.query.tar)

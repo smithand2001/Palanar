@@ -2,6 +2,18 @@ const express = require('express');
 const UserTask = require('../models/UserTask');
 const router = express.Router();
 
+const sessionChecker = (req, res, next) => {
+    if (req.session.user === undefined) {
+      res.redirect("/login")
+    }
+    if (req.session.user.isStudent) {
+      next()
+    } else {
+      res.redirect("/?msg=raf")
+    }
+  }
+  router.use(sessionChecker)
+
 // invoked when user presses an edit button somewhere else
 // should bring up the Edit Task screen, fill in with all existing
 // task information
