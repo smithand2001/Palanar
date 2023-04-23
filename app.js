@@ -81,7 +81,8 @@ async function setup() {
       semester: "Spring",
       courseDesc: "Introduction to Web Development",
       enrollNum: 80,
-      AdminUsername: admin.username 
+      AdminUsername: admin.username,
+      enrollCount: 0
     }
   )
   const t1 = await UserTask.create({taskName: "Homework 1",

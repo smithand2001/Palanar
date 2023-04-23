@@ -18,10 +18,10 @@ router.post('/LoggingIn', async function (req, res, next) {
         req.session.isAdmin = true
         res.redirect('/adminHome?Lmsg=LogInSuccess')
       } else {
-        res.redirect('/?msg=fail')
+        res.redirect('/login?msg=fail')
       }
     } catch (error) {
-      res.redirect('/?Lmsg=' + new URLSearchParams(error.toString()).toString())
+      res.redirect('/login?Lmsg=' + new URLSearchParams(error.toString()).toString())
     }
   }
   // Student User
@@ -32,12 +32,12 @@ router.post('/LoggingIn', async function (req, res, next) {
       if (user !== null) {
         req.session.user = user
         req.session.isStudent = true
-        res.redirect('/studenthome?Lmsg=LogInSuccess')
+        res.redirect('/studentHome?Lmsg=LogInSuccess')
       } else {
-        res.redirect('/?msg=fail')
+        res.redirect('/login?msg=fail')
       }
     } catch (error) {
-      res.redirect('/register?Lmsg=' + new URLSearchParams(error.toString()).toString())
+      res.redirect('/login?Lmsg=' + new URLSearchParams(error.toString()).toString())
     }
   }
 })

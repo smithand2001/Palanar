@@ -24,8 +24,6 @@
                 <h2>All Courses - <%= courseCount %></h2>
             </div>
         </div>
-        <%- include("coursemsg") %>
-        <%- include("usermsg") %>
 
         <!--COURSES TABLE-->
         <div class="row">
@@ -42,7 +40,7 @@
                 <li class="list-group-item">Instructor: <%= course.AdminUsername %></li>
               </ul>
               <div class="card-body">
-                <a href= <%="/adminHome/"+course.courseid %> class="card-link">Course Details</a>
+                <a href= <%="/studentHome/"+course.courseid %> class="card-link">Course Details</a>
               </div>
             </div>
 
