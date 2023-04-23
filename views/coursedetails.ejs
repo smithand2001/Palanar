@@ -136,22 +136,25 @@
         </div>
       </div>
       <%} else {%>
+        <% if(enrolled === false) {%>
         <form action=<%="/studentHome/enroll/" +course.courseid %> method="get">
           <div class="form-group">
             <input type="submit" value="Enroll" class="btn btn-primary"></button>
           </div>
         </form>
         <br>
+        <%} else {%>
         <a class="btn btn-danger" href="/studentHome" data-bs-toggle="modal" data-bs-target="#exampleModal"
           role="button">
-          Unenroll
+          Withdraw
         </a>
+        
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Course Enrollment</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Course Withdrawal</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -159,7 +162,7 @@
               </div>
               <div class="modal-footer">
                 <form action=<%="/studentHome/unenroll/" +course.courseid %> method="get">
-                  <input type="submit" class="btn btn-danger" value="Enroll">
+                  <input type="submit" class="btn btn-danger" value="Withdraw">
                 </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <!-- <button type="button" class="btn btn-danger">Save changes</button> -->
@@ -167,6 +170,7 @@
             </div>
           </div>
         </div>
+        <% } %>
         <% } %>
 
   </div>

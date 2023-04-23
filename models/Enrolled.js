@@ -16,7 +16,26 @@ class Enrolled extends Model {
             return null
         }
     }
+    static async isEnrolled(username, courseid){
+        try{
+            const enrolled = await Enrolled.findAll({
+                where: {
+                    StudentUsername: username,
+                    CourseCourseid: courseid
+            }})
+            if(Object.keys(enrolled).length !== 0){
+                return true
+            }
+            else {
+                return false
+            }
+        } catch(error) {
+            console.log(error)
+            return null
+        }
+    }
 }
+
 Enrolled.init({
     id: {
         type: DataTypes.INTEGER,
