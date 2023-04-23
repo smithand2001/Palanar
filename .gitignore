@@ -13,5 +13,8 @@ coverage
 # Benchmarking
 benchmarks/graphs
 
+# Database
+database/palanar.sqlite
+
 # ignore additional files using core.excludesFile
 # https://git-scm.com/docs/gitignore
