@@ -16,6 +16,26 @@ class Course extends Model {
             return null
         }
     }
+
+    // get all courses of the instructor/admin
+    static async findInstructorsCourses(adminUsername)
+    {
+      try {
+        const courses = await Course.findAll({where: {AdminUsername: adminUsername}});
+        
+        if(courses)
+        {
+          return courses;
+        }
+        else
+        {
+          return null;
+        }
+      } catch(error) {
+        console.log(error);
+        return null;
+      }
+    }
 }
 
 Course.init({

@@ -21,6 +21,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var logoutRouter = require('./routes/logout');
 const CourseTask = require('./models/CourseTask');
+const newCourseTaskRouter = require('./routes/newCourseTask');
 
 
 var app = express();
@@ -55,6 +56,7 @@ app.use('/adminHome', adminHomeRouter)
 app.use('/login', loginRouter)
 app.use('/register', registerRouter)
 app.use('/logout', logoutRouter)
+app.use('/newCourseTask', newCourseTaskRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
