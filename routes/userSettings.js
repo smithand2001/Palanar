@@ -44,7 +44,7 @@ router.post('/updatePassSubmit', async function(req, res, next) {
                     username: req.session.user.username
                 }
             });
-            req.session.user.password = newPassword;
+            req.session.user.password = req.body.newPassword;
         }
         else
         {
