@@ -2,6 +2,7 @@ const sequelize = require('../db')
 const { Model, DataTypes } = require('sequelize')
 const Student = require('./Student')
 const Enrolled = require ('./Enrolled')
+const CourseTask = require('./CourseTask')
 
 
 class Course extends Model {
@@ -14,6 +15,26 @@ class Course extends Model {
             console.log(error)
             return null
         }
+    }
+
+    // get all courses of the instructor/admin
+    static async findInstructorsCourses(adminUsername)
+    {
+      try {
+        const courses = await Course.findAll({where: {AdminUsername: adminUsername}});
+        
+        if(courses)
+        {
+          return courses;
+        }
+        else
+        {
+          return null;
+        }
+      } catch(error) {
+        console.log(error);
+        return null;
+      }
     }
 }
 
@@ -51,6 +72,14 @@ Course.init({
 // one student belongs to many courses, on course has many students, junction table = enrolled
 Student.belongsToMany(Course, { through: Enrolled});
 Course.belongsToMany(Student, { through: Enrolled});
+
+Course.hasMany(CourseTask, {
+  onDelete: 'CASCADE',
+  foreignKey:{
+        allowNull:false
+}});
+
+CourseTask.belongsTo(Course);
 
 
 module.exports = Course

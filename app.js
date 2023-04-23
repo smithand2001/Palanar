@@ -19,7 +19,10 @@ var studentHomeRouter = require('./routes/studentHome');
 var adminHomeRouter = require('./routes/adminHome');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
-var logoutRouter = require('./routes/logout')
+var logoutRouter = require('./routes/logout');
+const CourseTask = require('./models/CourseTask');
+const newCourseTaskRouter = require('./routes/newCourseTask');
+const editCourseTaskRouter = require('./routes/editCourseTask');
 
 
 var app = express();
@@ -54,6 +57,8 @@ app.use('/adminHome', adminHomeRouter)
 app.use('/login', loginRouter)
 app.use('/register', registerRouter)
 app.use('/logout', logoutRouter)
+app.use('/newCourseTask', newCourseTaskRouter)
+app.use('/editCourseTask', editCourseTaskRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -90,7 +95,7 @@ async function setup() {
   const t1 = await UserTask.create({taskName: "Homework 1",
                                     dueDate: "2023-04-28",
                                     taskType: "Homework",
-                                    taskClass: "CptS489",
+                                    taskClass: "UW-CSE403",
                                     taskPriority: "High",
                                     taskDescription: "Full-stack web app.",
                                     StudentUsername: "subu"})
@@ -98,10 +103,17 @@ async function setup() {
   const e1 = await UserTask.create({taskName: "Final Exam",
                                     dueDate: "2023-05-01",
                                     taskType: "Test",
-                                    taskClass: "CptS489",
+                                    taskClass: "UW-CSE403",
                                     taskPriority: "Very High",
                                     taskDescription: "Final exam.",
                                     StudentUsername: "subu"})
+
+  const ct1 = await CourseTask.create({ctaskName: "Our Actual Final Exam",
+                                        cdueDate: "2023-05-03",
+                                        ctaskType: "Test",
+                                        ctaskPriority: "Very High",
+                                        ctaskDescription: "In-class practical final exam. Working with databases and data validation.",
+                                        CourseCourseid: "CPTS489"})
 }
 
 seqeuelize.sync({force: true}).then(()=>{

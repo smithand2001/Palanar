@@ -31,23 +31,48 @@
                     </div>
             </div>
             <div class="col-8 border border-dark border-bottom-0">
-                <h3>All Tasks for <%= req.session.user.username %></h3>
-                <% if(tasks) { %>
-                    <% for(task of tasks) { %>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                              <h5 class="card-title"><%= task.dataValues.taskName %></h5>
-                              <h6 class="card-subtitle mb-2 text-muted"><%= task.dataValues.taskType %></h6>
-                              <h6 class="card-subtitle mb-2 text-muted">Due: <%= task.dataValues.dueDate %></h6>
-                              <h6 class="card-subtitle mb-2 text-muted">Class: <%= task.dataValues.taskClass %></h6>
-                              <h6 class="card-subtitle mb-2 text-muted">Priority: <%= task.dataValues.taskPriority %></h6>
-                              <p class="card-text"><%= task.dataValues.taskDescription %></p>
-                              <a href="<%= "/editTask/"+task.dataValues.taskID%>" class="card-link">Edit</a>
+                <h3>All of <%= req.session.user.username %>'s Tasks</h3>
+                <div class="d-flex flex-row flex-wrap">
+                    <% if(tasks) { %>
+                        <% for(task of tasks) { %>
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                <h5 class="card-title"><%= task.dataValues.taskName %></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><%= task.dataValues.taskType %></h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Due: <%= task.dataValues.dueDate %></h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Class: <%= task.dataValues.taskClass %></h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Priority: <%= task.dataValues.taskPriority %></h6>
+                                <p class="card-text"><%= task.dataValues.taskDescription %></p>
+                                <a href="<%= "/editTask/"+task.dataValues.taskID%>" class="card-link">Edit</a>
+                                </div>
                             </div>
-                        </div>
+                        <% } %>
                     <% } %>
-                <% } %>
+                </div>
             </div>
+
+            <% for([course, ctasks] of Object.entries(courseAndTasks)) { %>
+                <div class="col-4 border border-dark border-top-0 border-bottom-0 border-left-0"></div>
+                <div class="col-8 border border-dark border-bottom-0">
+                    <h3><%= course %> Course Tasks</h3>
+                    <div class="d-flex flex-row flex-wrap">
+                        <% if(ctasks) { %>
+                            <% for(task of ctasks) { %>
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title"><%= task.dataValues.ctaskName %></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"><%= task.dataValues.ctaskType %></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Due: <%= task.dataValues.cdueDate %></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Class: <%= task.dataValues.CourseCourseid %></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Priority: <%= task.dataValues.ctaskPriority %></h6>
+                                    <p class="card-text"><%= task.dataValues.ctaskDescription %></p>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+            <% } %>
         </div>
       </div>
 </body>

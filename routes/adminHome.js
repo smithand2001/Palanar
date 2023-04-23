@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const Course = require('../models/Course');
 const Admin = require('../models/Admin');
-const Enrolled = require('../models/Enrolled')
+const Enrolled = require('../models/Enrolled');
+const CourseTask = require('../models/CourseTask');
 
 const sessionChecker = (req, res, next)=> {
   if(req.session.user === undefined)
@@ -33,7 +34,27 @@ router.get('/', async function (req, res, next) {
     res.locals.courseid = req.query.courseid
   }
   const courseCount = await admin.countCourses();
-  res.render('adminHome', { courses, courseCount});
+
+  const instructorCourses = await Course.findInstructorsCourses(req.session.user.username);
+  const courseidList = [];
+  for(const cr of instructorCourses)
+  {
+    courseidList.push(cr.dataValues.courseid);
+  }
+  console.log(courseidList);
+
+  const taskList = [];
+  for(const courseid of courseidList)
+  {
+    taskList.push(await CourseTask.findAllTasksOfCourse(courseid));
+  }
+
+  // algorithm from https://stackoverflow.com/questions/39127989/create-an-object-from-an-array-of-keys-and-an-array-of-values
+  const coursesAndTasks = {};
+  courseidList.forEach((key, i) => coursesAndTasks[key] = taskList[i]);
+  console.log(coursesAndTasks);
+
+  res.render('adminHome', { courses, courseCount, coursesAndTasks});
 });
 
 router.get('/createCourse', (req, res, next) => {
