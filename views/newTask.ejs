@@ -21,7 +21,7 @@
             <h1>Add Task</h1>
         </div>
 
-        <form method="POST" action="/addTask/create">
+        <form method="POST" action="/newTask/create">
             <div class="row g-6">
                 <div class="form-group col mb-3">
                     <label for="formAssignmentName" class="col-form-label-lg">Task Name</label>
@@ -74,6 +74,8 @@
                     <textarea class="form-control" id="formAssignmentDescription" name="formAssignmentDescription" rows="4"></textarea>
                 </div>
             </div>
+            
+            <%- include("taskAlerts") %>
 
             <div class="row g-6">
                 <div class="form-group col mb-3 d-flex justify-content-end">
@@ -84,7 +86,6 @@
                 </div>
             </div>
 
-            <%- include("taskAlerts") %>
         </form>
     </div>
 

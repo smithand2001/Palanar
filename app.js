@@ -81,7 +81,7 @@ async function setup() {
     }
   )
   const t1 = await UserTask.create({taskName: "Homework 1",
-                                    dueDate: "Tue Apr 20 2023 23:15:30 GMT-0700 (Pacific Daylight Time)",
+                                    dueDate: "2023-04-28",
                                     taskType: "Homework",
                                     taskClass: "CptS489",
                                     taskPriority: "High",
@@ -89,7 +89,7 @@ async function setup() {
                                     StudentUsername: "subu"})
 
   const e1 = await UserTask.create({taskName: "Final Exam",
-                                    dueDate: "Tue Apr 24 2023 23:15:30 GMT-0700 (Pacific Daylight Time)",
+                                    dueDate: "2023-05-01",
                                     taskType: "Test",
                                     taskClass: "CptS489",
                                     taskPriority: "Very High",

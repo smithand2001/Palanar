@@ -1,7 +1,7 @@
 <% if(locals.taskAlertResponse) { %>
     <% if(taskAlertResponse === "successAdd") { %>
         <div class="alert alert-success" role="alert">
-            Task added successfully!
+            Task "<%= locals.alertTaskName %>" added successfully!
         </div>
     <% } else if(taskAlertResponse === "successEdit") { %>
         <div class="alert alert-success" role="alert">
