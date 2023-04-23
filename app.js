@@ -7,6 +7,7 @@ var seqeuelize = require('./db')
 const session = require('express-session')
 const Student = require('./models/Student')
 const Course = require('./models/Course')
+const UserTask = require('./models/UserTask')
 
 var landingRouter = require('./routes/landing');
 // var usersRouter = require('./routes/users');
@@ -79,6 +80,21 @@ async function setup() {
       enrollNum: 80
     }
   )
+  const t1 = await UserTask.create({taskName: "Homework 1",
+                                    dueDate: "Tue Apr 20 2023 23:15:30 GMT-0700 (Pacific Daylight Time)",
+                                    taskType: "Homework",
+                                    taskClass: "CptS489",
+                                    taskPriority: "High",
+                                    taskDescription: "Full-stack web app.",
+                                    StudentUsername: "subu"})
+
+  const e1 = await UserTask.create({taskName: "Final Exam",
+                                    dueDate: "Tue Apr 24 2023 23:15:30 GMT-0700 (Pacific Daylight Time)",
+                                    taskType: "Test",
+                                    taskClass: "CptS489",
+                                    taskPriority: "Very High",
+                                    taskDescription: "Final exam.",
+                                    StudentUsername: "subu"})
 }
 
 seqeuelize.sync({force: true}).then(()=>{

@@ -44,9 +44,7 @@ Student.init({
 });
 
 Student.hasMany(UserTask, {
-    foreignKey: {
-        allowNull: false
-}})
+    allowNull: false})
 
 UserTask.belongsTo(Student)
 
